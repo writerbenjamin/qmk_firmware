@@ -19,13 +19,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define _______ KC_TRNS
 
-#define KM_QWERTY  0
-#define KM_DVORAK  1
-#define KM_COLEMAK 2
-#define KM_MEDIA   3
-#define KM_TOP 	   4
-#define KM_GREEK   5
-#define KM_GREEK_SHIFT 6
+enum layer_names {
+ KM_QWERTY,
+ KM_DVORAK,
+ KM_COLEMAK,
+ KM_MEDIA,
+ KM_TOP,
+ KM_GREEK,
+ KM_GREEK_SHIFT,
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	/* Layer 0: Standard ANSI layer */
