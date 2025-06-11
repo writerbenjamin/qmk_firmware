@@ -26,6 +26,16 @@
              {"pin_a": "GP17", "pin_b": "GP18"}
         ]
     },
+    "ws2812": {
+        "pin": "GP13",
+        "driver": "vendor"
+    },
+    "rgblight": {
+        "led_count": 4,
+        "layers": {
+            "enabled": true
+        }
+    },
     "layouts": {
         "LAYOUT": {
             "layout": [
