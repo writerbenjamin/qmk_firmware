@@ -41,7 +41,7 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(/* Base */
-                 MO(_FN0),  KC_HOME,    KC_PGUP,
+                 MO(_ML1),  KC_HOME,    KC_PGUP,
                  KC_DEL,    KC_END,     KC_PGDN,
                  
                             KC_UP,
@@ -53,16 +53,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             KC_TRNS,
                  KC_TRNS,   KC_TRNS,    KC_TRNS),
     [_ML1] = LAYOUT( /*music layer */
-                 TG(0),     QMKSONG1,    QMKSONG2,
-		QMKSONG3,   QMKSONG4,    QMKSONG5,
+                 KC_TRNS,     QMKSONG1,    QMKSONG2,
+		QK_BOOT,   QMKSONG4,    QMKSONG5,
                  
 		            QMKSONG6,
 		 QMKSONG7,   QMKSONG8,    QMKSONG9)
 };
-/*
+
 #ifdef AUDIO_ENABLE
 float song1[][2] = SONG(CAMPANELLA);
-float song2[][2] = SONG(FANTASIE_IMPROMPTU);
+/*
+ * float song2[][2] = SONG(FANTASIE_IMPROMPTU);
 float song3[][2] = SONG(ROCK_A_BYE_BABY);
 float song4[][2] = SONG(AG_SWAP_SOUND);
 float song5[][2] = SONG(WORKMAN_SOUND);
@@ -77,7 +78,7 @@ float song13[][2] = SONG(CAMPANELLA);
 float song14[][2] = SONG(FANTASIE_IMPROMPTU);
 float song15[][2] = SONG(NOCTURNE_OP_9_NO_1);
 */
-/*	
+	
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case QMKSONG1:
@@ -88,7 +89,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // when keycode QMKSONG1 is released
             }
             break;
-        case QMKSONG2:
+  /*      case QMKSONG2:
             if (record->event.pressed) {
                 // when keycode QMKSONG2 is pressed
                 PLAY_SONG(song2);
@@ -200,10 +201,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // when keycode QMKSONG15 is released
             }
             break;
+	    */
     }
 
     return true;
 }
 #endif
-*/
+
 

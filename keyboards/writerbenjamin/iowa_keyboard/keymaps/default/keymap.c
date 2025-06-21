@@ -13,8 +13,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     [0] = LAYOUT(
-        KC_1,   KC_2,
-        KC_3,   KC_4
+        MO(1),   KC_PGUP,
+        KC_PGDN,   KC_ENT
     ),
     [1] = LAYOUT(
         KC_5,   KC_6,
@@ -24,6 +24,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef OLED_ENABLE
 
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+  return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+}
+
 bool oled_task_user(void) {
     static const char PROGMEM qmk_logo[] = {
         0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
@@ -31,7 +35,13 @@ bool oled_task_user(void) {
         0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0
     };
     oled_write_P(qmk_logo, false);
+
+    // Host Keyboard LED Status
+    led_t led_state = host_keyboard_led_state();
+    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
+    oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
+    oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
     return false;
 }
-
 #endif
+
