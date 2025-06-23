@@ -11,8 +11,8 @@
         "nkro": false
     },
     "matrix_pins": {
-        "cols": ["GP8", "GP9", "GP12", "GP16"],
-        "rows": ["GP10", "GP11", "GP14", "GP16"]
+        "cols": ["GP7", "GP8", "GP12", "GP14"],
+        "rows": ["GP9", "GP10", "GP13", "GP15"]
     },
     "url": "https://github.com/writerbenjamin/WB_keyboards/Marspad",
     "usb": {
@@ -22,12 +22,12 @@
     },
     "encoder": {
         "rotary": [
-             {"pin_a": "GP2", "pin_b": "GP1"},
-             {"pin_a": "GP17", "pin_b": "GP18"}
+             {"pin_a": "GP1", "pin_b": "GP0"},
+             {"pin_a": "GP26", "pin_b": "GP27"}
         ]
     },
     "ws2812": {
-        "pin": "GP13",
+        "pin": "GP12",
         "driver": "vendor"
     },
     "rgblight": {
