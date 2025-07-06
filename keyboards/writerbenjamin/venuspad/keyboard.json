@@ -25,6 +25,9 @@
 	      {"pin_a": "F4", "pin_b": "F5"}
 	 ]
     },
+    "leds": {
+        "num_lock": "D4"
+    },
     "layouts": {
         "LAYOUT": {
             "layout": [
