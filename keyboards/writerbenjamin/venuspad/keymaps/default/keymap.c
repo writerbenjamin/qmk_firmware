@@ -69,26 +69,41 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif
 
 #ifdef OLED_ENABLE
-//oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-//  return OLED_ROTATION_90;   // flips the display 180 degrees if offhand
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    return OLED_ROTATION_90;       // flips the display 270 degrees
+}
+
+//static void render_logo(void) {
+//    static const char PROGMEM my_logo[] = {
+//        
+//    };
+//
+//    oled_write_P(my_logo, false);
+//}
 
 bool oled_task_user(void) {
+    
+    //render_logo();
+    oled_set_cursor(0,6);
+
+    oled_write_ln_P(PSTR("Layer"), false);
+
+    switch (get_highest_layer(layer_state)) {
+        case L1:
+            oled_write_ln_P(PSTR("L1  "), false);
+            break;
+        case L2:
+            oled_write_ln_P(PSTR("L2  "), false);
+            break;
+        default:
+            oled_write_ln_P(PSTR("Undef"), false);
+    }
+    oled_write_ln_P(PSTR(""), false);
     // Host Keyboard LED Status
     led_t led_state = host_keyboard_led_state();
-    oled_write_ln_P(led_state.caps_lock ? PSTR("CAP") : PSTR("   "), false);
-    oled_write_ln_P(led_state.num_lock ? PSTR("NUM") : PSTR("   "), false);
-    oled_write_ln_P(led_state.scroll_lock ? PSTR("SCR") : PSTR("   "), false);
-    uint8_t layer = get_highest_layer(layer_state);
-    switch (layer) {
-	case L1:
-	    oled_write_ln_P(PSTR("L1"), false);
-	    break;
-	case L2:
-	    oled_write_ln_P(PSTR("L2"), false);
-	    break;
-	default:
-	    break;
-    }
+    oled_write_ln_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
+    oled_write_ln_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
+    oled_write_ln_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
     return false;
 }
 #endif
